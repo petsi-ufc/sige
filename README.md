@@ -1,2 +1,2 @@
-# seven-2.0
+# Sistema de gerenciamento de eventos
 Novo Sistema de Gerenciamento de Eventos
