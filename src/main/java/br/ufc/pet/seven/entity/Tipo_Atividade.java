@@ -13,7 +13,7 @@ public enum Tipo_Atividade {
 	OUTROS("outros");
 	
 	private String tipo_atividade;
-	 
+	
 	Tipo_Atividade(String tipo_atividade) {
         this.tipo_atividade = tipo_atividade;
     }
