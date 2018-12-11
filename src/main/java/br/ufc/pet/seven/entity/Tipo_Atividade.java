@@ -1,24 +1,22 @@
 package br.ufc.pet.seven.entity;
 
-public enum Tipo_Atividade {
+import org.springframework.security.core.Transient;
 
-	PALESTRA("palestra"), 
-	MINICURSO("minicurso"), 
-	MESA_REDONDA("mesa_redonda"), 
-	HACKATHON("hackathon"), 
-	OFICINA("oficina"), 
-	EXPOSICAO("exposicao"), 
-	APRESENTACAO("apresentacao"), 
-	WORKSHOP("workshop"), 
-	OUTROS("outros");
-	
-	private String tipo_atividade;
-	
-	Tipo_Atividade(String tipo_atividade) {
-        this.tipo_atividade = tipo_atividade;
-    }
- 
-    public String getTipo_Atividade() {
-        return tipo_atividade;
+@Transient
+public final class Tipo_Atividade {
+
+	private static final String PALESTRA = "palestra";
+	private static final String MINICURSO = "minicurso";
+	private static final String MESA_REDONDA = "mesa_redonda";
+	private static final String HACKATHON = "hackathon";
+	private static final String OFICINA = "oficina";
+	private static final String EXPOSICAO = "exposicao";
+	private static final String APRESENTACAO = "apresentacao";
+	private static final String WORKSHOP = "workshop";
+	private static final String OUTROS = "outros";
+    
+    private Tipo_Atividade() {
+    	throw new AssertionError();
     }
 }
+

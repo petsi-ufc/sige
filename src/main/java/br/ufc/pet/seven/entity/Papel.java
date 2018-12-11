@@ -1,20 +1,17 @@
 package br.ufc.pet.seven.entity;
 
-public enum Papel {
+import org.springframework.security.core.Transient;
 
-	ADMINISTRADOR("administrador"),
-	ORGANIZADOR("organizador"),
-	AUXILIAR("auxiliar"),
-	RESPONSAVEL_ATIVIDADE("responsavel_atividade"),
-	PARTICIPANTE("participante");
-
-	private String papel;
-	 
-    Papel(String papel) {
-        this.papel = papel;
-    }
+@Transient
+public final class Papel {
+	
+	private static final String ADMINISTRADOR = "administrador";
+	private static final String ORGANIZADOR = "organizador";
+	private static final String AUXILIAR = "auxiliar";
+	private static final String RESPONSAVEL_ATIVIDADE = "responsavel_atividade";
+	private static final String PARTICIPANTE = "participante";
  
-    public String getPapel() {
-        return papel;
+    private Papel() {
+    	throw new AssertionError();
     }
 }

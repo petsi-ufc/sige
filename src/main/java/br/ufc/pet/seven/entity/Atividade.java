@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,24 +33,30 @@ public class Atividade {
 	@NotNull
 	private int vagas;
 	
-	private boolean aceita_inscricao = true;
-	
-	@Enumerated(EnumType.STRING)
+	@NotNull
 	private Tipo_Atividade tipo_atividade;
 	
+	private boolean aceita_inscricao = true;
 	private boolean certificado_liberado = false;
 	
 	@ManyToOne
-	private Responsavel_Atividade responsavel;
+	@NotNull
+	private Usuario responsavel;
 	
 	@OneToMany
-	private List<Inscricao> inscricao;
-	
-	@OneToMany
+	@NotNull
 	private List<Sessao> sessao;
-
+	
+	@OneToMany
+	@NotNull
+	private List<Usuario> participante;
+	
+	public Atividade() {
+		
+	}
+	
 	public Atividade(@NotNull String localizacao, @NotNull String nome, Evento evento, @NotNull int vagas,
-			Tipo_Atividade tipo_atividade, Responsavel_Atividade responsavel, List<Sessao> sessao) {
+			@NotNull Tipo_Atividade tipo_atividade, @NotNull Usuario responsavel, @NotNull List<Sessao> sessao) {
 		super();
 		this.localizacao = localizacao;
 		this.nome = nome;
@@ -95,20 +99,20 @@ public class Atividade {
 		this.vagas = vagas;
 	}
 
-	public boolean isAceita_inscricao() {
-		return aceita_inscricao;
-	}
-
-	public void setAceita_inscricao(boolean aceita_inscricao) {
-		this.aceita_inscricao = aceita_inscricao;
-	}
-
 	public Tipo_Atividade getTipo_atividade() {
 		return tipo_atividade;
 	}
 
 	public void setTipo_atividade(Tipo_Atividade tipo_atividade) {
 		this.tipo_atividade = tipo_atividade;
+	}
+
+	public boolean isAceita_inscricao() {
+		return aceita_inscricao;
+	}
+
+	public void setAceita_inscricao(boolean aceita_inscricao) {
+		this.aceita_inscricao = aceita_inscricao;
 	}
 
 	public boolean isCertificado_liberado() {
@@ -119,20 +123,12 @@ public class Atividade {
 		this.certificado_liberado = certificado_liberado;
 	}
 
-	public Responsavel_Atividade getResponsavel() {
+	public Usuario getResponsavel() {
 		return responsavel;
 	}
 
-	public void setResponsavel(Responsavel_Atividade responsavel) {
+	public void setResponsavel(Usuario responsavel) {
 		this.responsavel = responsavel;
-	}
-
-	public List<Inscricao> getInscricao() {
-		return inscricao;
-	}
-
-	public void setInscricao(List<Inscricao> inscricao) {
-		this.inscricao = inscricao;
 	}
 
 	public List<Sessao> getSessao() {
@@ -143,8 +139,15 @@ public class Atividade {
 		this.sessao = sessao;
 	}
 
+	public List<Usuario> getParticipante() {
+		return participante;
+	}
+
+	public void setParticipante(List<Usuario> participante) {
+		this.participante = participante;
+	}
+
 	public int getId() {
 		return id;
-	}
-	
+	}		
 }

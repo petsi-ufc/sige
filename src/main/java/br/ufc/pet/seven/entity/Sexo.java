@@ -1,19 +1,16 @@
 package br.ufc.pet.seven.entity;
 
-public enum Sexo {
+import org.springframework.security.core.Transient;
 
-	MASCULINO("masculino"), 
-	FEMININO("feminino"),
-	OUTROS("outros");
+@Transient
+public final class Sexo {
+
+	private static final String MASCULINO = "masculino";
+	private static final String FEMININO = "feminino";
+	private static final String OUTROS = "OUTROS";
 	
-	private String sexo;
-	 
-    Sexo(String sexo) {
-        this.sexo = sexo;
-    }
- 
-    public String getSexo() {
-        return sexo;
-    }
+	private Sexo() {
+	    throw new AssertionError();
+	}
 
 }

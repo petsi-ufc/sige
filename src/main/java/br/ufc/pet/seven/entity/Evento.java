@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -59,21 +58,18 @@ public class Evento {
 	private boolean status = true;
 	
 	@ManyToOne
-	private Organizador organizador;
+	private Usuario organizador;
 	
 	@OneToMany
 	private List<Atividade> atividade;
-	
-	@ManyToMany
-	private List<Auxiliar> auxiliar;
 
 	public Evento() {
 		
 	}
-	
-	public Evento(@NotNull String nome, @NotNull String sigla, @NotNull String area,
-			@NotNull String localizacao, @NotNull String descricao, @NotNull Date incio_inscricao,
-			@NotNull Date fim_inscricao, @NotNull Date inicio, @NotNull Date fim, Organizador organizador) {
+
+	public Evento(@NotNull String nome, @NotNull String sigla, @NotNull String area, @NotNull String localizacao,
+			@NotNull String descricao, @NotNull Date incio_inscricao, @NotNull Date fim_inscricao, @NotNull Date inicio,
+			@NotNull Date fim, Usuario organizador) {
 		super();
 		this.nome = nome;
 		this.sigla = sigla;
@@ -167,11 +163,11 @@ public class Evento {
 		this.status = status;
 	}
 
-	public Organizador getOrganizador() {
+	public Usuario getOrganizador() {
 		return organizador;
 	}
 
-	public void setOrganizador(Organizador organizador) {
+	public void setOrganizador(Usuario organizador) {
 		this.organizador = organizador;
 	}
 
@@ -181,14 +177,6 @@ public class Evento {
 
 	public void setAtividade(List<Atividade> atividade) {
 		this.atividade = atividade;
-	}
-
-	public List<Auxiliar> getAuxiliar() {
-		return auxiliar;
-	}
-
-	public void setAuxiliar(List<Auxiliar> auxiliar) {
-		this.auxiliar = auxiliar;
 	}
 
 	public int getId() {

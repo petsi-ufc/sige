@@ -1,16 +1,14 @@
 package br.ufc.pet.seven.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -19,8 +17,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "usuario")
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Usuario {
+public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +40,6 @@ public abstract class Usuario {
 	@NotNull
 	private Date data_nascimento;
 	
-	@Enumerated(EnumType.STRING)
 	@NotNull
 	private Sexo sexo;
 	
@@ -60,13 +56,11 @@ public abstract class Usuario {
 	@NotNull
 	private Date data_criacao;
 	
-	@Enumerated(EnumType.STRING)
 	@NotNull
-	private Papel papel;
+	private List<Papel> papel;
 	
-	private boolean status = true;
-	
-	private boolean ativacao = false;
+	private boolean status_conta = true;
+	private boolean ativacao_email = false;
 	
 	public Usuario(){
 		
@@ -74,7 +68,7 @@ public abstract class Usuario {
 	
 	public Usuario(@NotNull String nome, @NotNull String senha, @NotNull String telefone, @NotNull String email,
 			@NotNull Date data_nascimento, @NotNull Sexo sexo, String instituicao, @NotNull String cidade,
-			@NotNull String uf, Papel papel) {
+			@NotNull String uf, List<Papel> papel) {
 		super();
 		this.nome = nome;
 		this.senha = senha;
@@ -168,27 +162,27 @@ public abstract class Usuario {
 		return data_criacao;
 	}
 
-	public Papel getPapel() {
+	public List<Papel> getPapel() {
 		return papel;
 	}
 
-	public void setPapel(Papel papel) {
+	public void setPapel(List<Papel> papel) {
 		this.papel = papel;
 	}
 
 	public boolean isStatus() {
-		return status;
+		return status_conta;
 	}
 
 	public void setStatus(boolean status) {
-		this.status = status;
+		this.status_conta = status;
 	}
 
 	public boolean isAtivacao() {
-		return ativacao;
+		return ativacao_email;
 	}
 
 	public void setAtivacao(boolean ativacao) {
-		this.ativacao = ativacao;
+		this.ativacao_email = ativacao;
 	}
 }
