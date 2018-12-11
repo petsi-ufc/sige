@@ -1,16 +1,46 @@
 package br.ufc.pet.seven.entity;
 
-import org.springframework.security.core.Transient;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
-@Transient
-public final class Sexo {
+@Entity
+public class Sexo {
 
-	private static final String MASCULINO = "masculino";
-	private static final String FEMININO = "feminino";
-	private static final String OUTROS = "OUTROS";
+//	MASCULINO("masculino"), 
+//	FEMININO("feminino"),
+//	OUTROS("outros");
 	
-	private Sexo() {
-	    throw new AssertionError();
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(updatable = false, nullable = false)
+	private int id;
+	
+	@NotNull
+	private String sexo;
+
+	public Sexo() {
+		
+	}
+	
+	public Sexo(@NotNull String sexo) {
+		super();
+		this.sexo = sexo;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 }

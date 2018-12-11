@@ -1,22 +1,48 @@
 package br.ufc.pet.seven.entity;
 
-import org.springframework.security.core.Transient;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
-@Transient
-public final class Tipo_Atividade {
+@Entity
+public class Tipo_Atividade {
 
-	private static final String PALESTRA = "palestra";
-	private static final String MINICURSO = "minicurso";
-	private static final String MESA_REDONDA = "mesa_redonda";
-	private static final String HACKATHON = "hackathon";
-	private static final String OFICINA = "oficina";
-	private static final String EXPOSICAO = "exposicao";
-	private static final String APRESENTACAO = "apresentacao";
-	private static final String WORKSHOP = "workshop";
-	private static final String OUTROS = "outros";
-    
-    private Tipo_Atividade() {
-    	throw new AssertionError();
-    }
+//	PALESTRA("palestra"), 
+//	MINICURSO("minicurso"), 
+//	MESA_REDONDA("mesa_redonda"), 
+//	HACKATHON("hackathon"), 
+//	OFICINA("oficina"), 
+//	EXPOSICAO("exposicao"), 
+//	APRESENTACAO("apresentacao"), 
+//	WORKSHOP("workshop"), 
+//	OUTROS("outros");
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(updatable = false, nullable = false)
+	private int id;
+	
+	@NotNull
+	private String tipo_atividade;
+	
+	public Tipo_Atividade(@NotNull String tipo_atividade) {
+		super();
+		this.tipo_atividade = tipo_atividade;
+	}
+
+	public String getTipo_atividade() {
+		return tipo_atividade;
+	}
+
+	public void setTipo_atividade(String tipo_atividade) {
+		this.tipo_atividade = tipo_atividade;
+	}
+
+	public int getId() {
+		return id;
+	}
 }
 

@@ -40,6 +40,7 @@ public class Usuario {
 	@NotNull
 	private Date data_nascimento;
 	
+	@ManyToOne
 	@NotNull
 	private Sexo sexo;
 	
@@ -56,6 +57,7 @@ public class Usuario {
 	@NotNull
 	private Date data_criacao;
 	
+	@ManyToMany
 	@NotNull
 	private List<Papel> papel;
 	
@@ -66,21 +68,21 @@ public class Usuario {
 		
 	}
 	
-	public Usuario(@NotNull String nome, @NotNull String senha, @NotNull String telefone, @NotNull String email,
-			@NotNull Date data_nascimento, @NotNull Sexo sexo, String instituicao, @NotNull String cidade,
-			@NotNull String uf, List<Papel> papel) {
-		super();
-		this.nome = nome;
-		this.senha = senha;
-		this.telefone = telefone;
-		this.email = email;
-		this.data_nascimento = data_nascimento;
-		this.sexo = sexo;
-		this.instituicao = instituicao;
-		this.cidade = cidade;
-		this.uf = uf;
-		this.papel = papel;
-	}
+//	public Usuario(@NotNull String nome, @NotNull String senha, @NotNull String telefone, @NotNull String email,
+//			@NotNull Date data_nascimento, @NotNull Sexo sexo, String instituicao, @NotNull String cidade,
+//			@NotNull String uf, List<Papel> papel) {
+//		super();
+//		this.nome = nome;
+//		this.senha = senha;
+//		this.telefone = telefone;
+//		this.email = email;
+//		this.data_nascimento = data_nascimento;
+//		this.sexo = sexo;
+//		this.instituicao = instituicao;
+//		this.cidade = cidade;
+//		this.uf = uf;
+//		this.papel = papel;
+//	}
 
 	public int getId() {
 		return id;
@@ -162,13 +164,13 @@ public class Usuario {
 		return data_criacao;
 	}
 
-	public List<Papel> getPapel() {
-		return papel;
-	}
-
-	public void setPapel(List<Papel> papel) {
-		this.papel = papel;
-	}
+//	public List<Papel> getPapel() {
+//		return papel;
+//	}
+//
+//	public void setPapel(List<Papel> papel) {
+//		this.papel = papel;
+//	}
 
 	public boolean isStatus() {
 		return status_conta;
