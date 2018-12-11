@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "participacao")
@@ -20,9 +21,11 @@ public class Participacao {
 	private boolean certificado = false;
 
 	@ManyToOne
+	@NotNull
 	private Usuario participante;
 	
 	@ManyToOne
+	@NotNull
 	private Atividade atividade;	
 	
 	public Participacao() {

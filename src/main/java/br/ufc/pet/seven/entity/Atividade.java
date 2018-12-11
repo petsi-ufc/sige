@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,7 +35,7 @@ public class Atividade {
 	
 	@ManyToOne
 	@NotNull
-	private Tipo_Atividade tipo_atividade;
+	private TipoAtividade tipo_atividade;
 	
 	private boolean aceita_inscricao = true;
 	private boolean certificado_liberado = false;
@@ -59,7 +57,7 @@ public class Atividade {
 	}
 	
 	public Atividade(@NotNull String localizacao, @NotNull String nome, Evento evento, @NotNull int vagas,
-			@NotNull Tipo_Atividade tipo_atividade, @NotNull Usuario responsavel, @NotNull List<Sessao> sessao) {
+			@NotNull TipoAtividade tipo_atividade, @NotNull Usuario responsavel, @NotNull List<Sessao> sessao) {
 		super();
 		this.localizacao = localizacao;
 		this.nome = nome;
@@ -102,11 +100,11 @@ public class Atividade {
 		this.vagas = vagas;
 	}
 
-	public Tipo_Atividade getTipo_atividade() {
+	public TipoAtividade getTipo_atividade() {
 		return tipo_atividade;
 	}
 
-	public void setTipo_atividade(Tipo_Atividade tipo_atividade) {
+	public void setTipo_atividade(TipoAtividade tipo_atividade) {
 		this.tipo_atividade = tipo_atividade;
 	}
 

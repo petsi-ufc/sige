@@ -5,21 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Tipo_Atividade {
+@Table(name = "tipo_atividade")
+public class TipoAtividade {
 
-//	PALESTRA("palestra"), 
-//	MINICURSO("minicurso"), 
-//	MESA_REDONDA("mesa_redonda"), 
-//	HACKATHON("hackathon"), 
-//	OFICINA("oficina"), 
-//	EXPOSICAO("exposicao"), 
-//	APRESENTACAO("apresentacao"), 
-//	WORKSHOP("workshop"), 
-//	OUTROS("outros");
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
@@ -28,7 +20,7 @@ public class Tipo_Atividade {
 	@NotNull
 	private String tipo_atividade;
 	
-	public Tipo_Atividade(@NotNull String tipo_atividade) {
+	public TipoAtividade(@NotNull String tipo_atividade) {
 		super();
 		this.tipo_atividade = tipo_atividade;
 	}

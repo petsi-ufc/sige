@@ -5,9 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "papel")
 public class Papel {
 	
 	@Id
@@ -50,11 +52,4 @@ public class Papel {
 	public int getId() {
 		return id;
 	}
-	
-//	ADMINISTRADOR("administrador"),
-//	ORGANIZADOR("organizador"),
-//	AUXILIAR("auxiliar"),
-//	RESPONSAVEL_ATIVIDADE("responsavel_atividade"),
-//	PARTICIPANTE("participante");	
-	
 }
