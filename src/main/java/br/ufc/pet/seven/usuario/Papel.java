@@ -11,11 +11,11 @@ import javax.validation.constraints.NotNull;
 @Table(name = "papel")
 public class Papel {
 
-	private static final String ADMINISTRADOR = "administrador";
-	private static final String ORGANIZADOR = "organizador";
-	private static final String AUXILIAR = "auxiliar";
-	private static final String RESPONSAVEL_ATIVIDADE = "responsavel_atividade";
-	private static final String PARTICIPANTE = "participante";
+	public static final String ADMINISTRADOR = "administrador";
+	public static final String ORGANIZADOR = "organizador";
+	public static final String AUXILIAR = "auxiliar";
+	public static final String RESPONSAVEL_ATIVIDADE = "responsavel_atividade";
+	public static final String PARTICIPANTE = "participante";
 
 	@Id
 	@Column(updatable = false, nullable = false)

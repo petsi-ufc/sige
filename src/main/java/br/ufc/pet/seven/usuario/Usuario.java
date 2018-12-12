@@ -20,8 +20,8 @@ import org.hibernate.annotations.CreationTimestamp;
 @Table(name = "usuario")
 public class Usuario {
 
-	private static final String MASCULINO = "masculino";
-	private static final String FEMININO = "feminino";
+	public static final String MASCULINO = "masculino";
+	public static final String FEMININO = "feminino";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
