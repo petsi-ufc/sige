@@ -61,7 +61,7 @@ public class Evento {
 	private Usuario organizador;
 	
 	@OneToMany
-	private List<Atividade> atividade;
+	private List<Atividade> atividades;
 
 	public Evento() {
 		
@@ -69,7 +69,7 @@ public class Evento {
 
 	public Evento(@NotNull String nome, @NotNull String sigla, @NotNull String area, @NotNull String localizacao,
 			@NotNull String descricao, @NotNull Date incio_inscricao, @NotNull Date fim_inscricao, @NotNull Date inicio,
-			@NotNull Date fim, Usuario organizador) {
+			@NotNull Date fim) {
 		super();
 		this.nome = nome;
 		this.sigla = sigla;
@@ -80,7 +80,6 @@ public class Evento {
 		this.fim_inscricao = fim_inscricao;
 		this.inicio = inicio;
 		this.fim = fim;
-		this.organizador = organizador;
 	}
 
 	public String getNome() {
@@ -171,15 +170,16 @@ public class Evento {
 		this.organizador = organizador;
 	}
 
-	public List<Atividade> getAtividade() {
-		return atividade;
+	public List<Atividade> getAtividades() {
+		return atividades;
 	}
 
-	public void setAtividade(List<Atividade> atividade) {
-		this.atividade = atividade;
+	public void setAtividades(List<Atividade> atividades) {
+		this.atividades = atividades;
 	}
 
 	public int getId() {
 		return id;
 	}
+	
 }
