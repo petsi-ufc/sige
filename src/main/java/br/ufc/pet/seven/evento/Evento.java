@@ -1,4 +1,4 @@
-package br.ufc.pet.seven.entity;
+package br.ufc.pet.seven.evento;
 
 import java.util.Date;
 import java.util.List;
@@ -15,6 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import br.ufc.pet.seven.atividade.Atividade;
+import br.ufc.pet.seven.usuario.Usuario;
+
 @Entity
 @Table(name = "evento")
 public class Evento {
@@ -23,48 +26,48 @@ public class Evento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
 	private int id;
-	
+
 	@NotNull
 	private String nome;
-	
+
 	@NotNull
 	private String sigla;
-	
+
 	@NotNull
 	private String area;
-	
+
 	@NotNull
 	private String localizacao;
-	
+
 	@NotNull
 	private String descricao;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date incio_inscricao;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date fim_inscricao;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date inicio;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date fim;
-	
+
 	private boolean status = true;
-	
+
 	@ManyToOne
 	private Usuario organizador;
-	
+
 	@OneToMany
 	private List<Atividade> atividades;
 
 	public Evento() {
-		
+
 	}
 
 	public Evento(@NotNull String nome, @NotNull String sigla, @NotNull String area, @NotNull String localizacao,
@@ -181,5 +184,5 @@ public class Evento {
 	public int getId() {
 		return id;
 	}
-	
+
 }

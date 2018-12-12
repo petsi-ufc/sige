@@ -1,4 +1,4 @@
-package br.ufc.pet.seven.entity;
+package br.ufc.pet.seven.sessao;
 
 import java.util.Date;
 import java.util.List;
@@ -15,6 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import br.ufc.pet.seven.atividade.Atividade;
+import br.ufc.pet.seven.usuario.Usuario;
+
 @Entity
 @Table(name = "sessao")
 public class Sessao {
@@ -23,26 +26,26 @@ public class Sessao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
 	private int id;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date inicio;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date fim;
-	
+
 	@ManyToOne
 	@NotNull
 	private Atividade atividade;
-	
+
 	@ManyToMany
 	private List<Usuario> presentes;
-	
+
 	public Sessao() {
-		
+
 	}
-	
+
 	public Sessao(@NotNull Date inicio, @NotNull Date fim, @NotNull Atividade atividade, List<Usuario> presentes) {
 		super();
 		this.inicio = inicio;
@@ -93,5 +96,5 @@ public class Sessao {
 	public int getId() {
 		return id;
 	}
-	
+
 }
