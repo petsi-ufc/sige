@@ -1,4 +1,4 @@
-package br.ufc.pet.seven.entity;
+package br.ufc.pet.seven.atividade;
 
 import java.util.List;
 
@@ -12,57 +12,61 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import br.ufc.pet.seven.evento.Evento;
+import br.ufc.pet.seven.sessao.Sessao;
+import br.ufc.pet.seven.usuario.Usuario;
+
 @Entity
 @Table(name = "atividade")
 public class Atividade {
-	
+
 	private static final String PALESTRA = "palestra";
 	private static final String MINICURSO = "minicurso";
-	private static final String MESA_REDONDA = "mesa_redonda"; 
-	private static final String HACKATHON = "hackathon"; 
+	private static final String MESA_REDONDA = "mesa_redonda";
+	private static final String HACKATHON = "hackathon";
 	private static final String OFICINA = "oficina";
 	private static final String EXPOSICAO = "exposicao";
-	private static final String APRESENTACAO = "apresentacao"; 
+	private static final String APRESENTACAO = "apresentacao";
 	private static final String WORKSHOP = "workshop";
 	private static final String OUTROS = "outros";
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
 	private int id;
-	
+
 	@NotNull
 	private String localizacao;
-	
+
 	@NotNull
 	private String nome;
-	
+
 	@ManyToOne
 	private Evento evento;
-	
+
 	@NotNull
 	private int vagas;
-	
+
 	@NotNull
 	private String tipo_atividade;
-	
+
 	private boolean aceita_inscricao = true;
 	private boolean certificado_liberado = false;
-	
+
 	@ManyToOne
 	@NotNull
 	private Usuario responsavel;
-	
+
 	@OneToMany
 	@NotNull
 	private List<Sessao> sessoes;
-	
+
 	@OneToMany
 	@NotNull
 	private List<Usuario> inscritos;
-	
+
 	public Atividade() {
-		
+
 	}
 
 	public Atividade(@NotNull String localizacao, @NotNull String nome, Evento evento, @NotNull int vagas,
@@ -196,5 +200,5 @@ public class Atividade {
 	public int getId() {
 		return id;
 	}
-	
+
 }

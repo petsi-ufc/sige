@@ -1,4 +1,4 @@
-package br.ufc.pet.seven.entity;
+package br.ufc.pet.seven.usuario;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,26 +10,26 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "papel")
 public class Papel {
-	
-	private static final String ADMINISTRADOR = "administrador";	
-	private static final String ORGANIZADOR = "organizador";	
-	private static final String AUXILIAR = "auxiliar";	
-	private static final String RESPONSAVEL_ATIVIDADE = "responsavel_atividade";	
+
+	private static final String ADMINISTRADOR = "administrador";
+	private static final String ORGANIZADOR = "organizador";
+	private static final String AUXILIAR = "auxiliar";
+	private static final String RESPONSAVEL_ATIVIDADE = "responsavel_atividade";
 	private static final String PARTICIPANTE = "participante";
-	
+
 	@Id
 	@Column(updatable = false, nullable = false)
 	@NotNull
 	private String papel;
-	
+
 	@ManyToOne
 	@NotNull
 	private Usuario usuario;
 
 	public Papel() {
-		
+
 	}
-	
+
 	public Papel(@NotNull String papel, @NotNull Usuario usuario) {
 		super();
 		this.papel = papel;
@@ -63,5 +63,5 @@ public class Papel {
 	public static String getParticipante() {
 		return PARTICIPANTE;
 	}
-	
+
 }

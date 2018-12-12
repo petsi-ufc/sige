@@ -1,4 +1,4 @@
-package br.ufc.pet.seven.entity;
+package br.ufc.pet.seven.usuario;
 
 import java.util.Date;
 import java.util.List;
@@ -19,57 +19,57 @@ import org.hibernate.annotations.CreationTimestamp;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
-	
+
 	private static final String MASCULINO = "masculino";
 	private static final String FEMININO = "feminino";
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
 	private int id;
-	
+
 	@NotNull
 	private String nome;
-	
+
 	@NotNull
 	private String senha;
-	
+
 	@NotNull
 	private String telefone;
-	
+
 	@NotNull
 	private String email;
-	
+
 	@Temporal(TemporalType.DATE)
 	@NotNull
 	private Date data_nascimento;
-	
+
 	@NotNull
 	private String sexo;
-	
+
 	private String instituicao = null;
 
 	@NotNull
 	private String cidade;
-	
+
 	@NotNull
 	private String uf;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
 	@NotNull
 	private Date data_criacao;
-	
+
 	@OneToMany
 	@NotNull
 	@Column(name = "papel")
 	private List<Papel> papeis;
-	
+
 	private boolean status_conta = true;
 	private boolean ativacao_email = false;
-	
-	public Usuario(){
-		
+
+	public Usuario() {
+
 	}
 
 	public Usuario(@NotNull String nome, @NotNull String senha, @NotNull String telefone, @NotNull String email,
@@ -204,5 +204,5 @@ public class Usuario {
 	public static String getFeminino() {
 		return FEMININO;
 	}
-	
+
 }
