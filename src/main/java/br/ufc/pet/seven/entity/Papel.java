@@ -2,9 +2,8 @@ package br.ufc.pet.seven.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -12,25 +11,29 @@ import javax.validation.constraints.NotNull;
 @Table(name = "papel")
 public class Papel {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(updatable = false, nullable = false)
-	private int id;
+	private static final String ADMINISTRADOR = "administrador";	
+	private static final String ORGANIZADOR = "organizador";	
+	private static final String AUXILIAR = "auxiliar";	
+	private static final String RESPONSAVEL_ATIVIDADE = "responsavel_atividade";	
+	private static final String PARTICIPANTE = "participante";
 	
+	@Id
+	@Column(updatable = false, nullable = false)
 	@NotNull
 	private String papel;
 	
+	@ManyToOne
 	@NotNull
-	private String descricao;
+	private Usuario usuario;
 
 	public Papel() {
 		
 	}
 	
-	public Papel(@NotNull String papel, @NotNull String descricao) {
+	public Papel(@NotNull String papel, @NotNull Usuario usuario) {
 		super();
 		this.papel = papel;
-		this.descricao = descricao;
+		this.usuario = usuario;
 	}
 
 	public String getPapel() {
@@ -41,15 +44,24 @@ public class Papel {
 		this.papel = papel;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public static String getAdministrador() {
+		return ADMINISTRADOR;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public static String getOrganizador() {
+		return ORGANIZADOR;
 	}
 
-	public int getId() {
-		return id;
+	public static String getAuxiliar() {
+		return AUXILIAR;
 	}
+
+	public static String getResponsavelAtividade() {
+		return RESPONSAVEL_ATIVIDADE;
+	}
+
+	public static String getParticipante() {
+		return PARTICIPANTE;
+	}
+	
 }

@@ -1,12 +1,15 @@
 package br.ufc.pet.seven.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,18 +32,30 @@ public class Sessao {
 	@NotNull
 	private Date fim;
 	
+	@ManyToOne
+	@NotNull
+	private Atividade atividade;
+	
+	@ManyToMany
+	private List<Usuario> presentes;
+	
 	public Sessao() {
 		
 	}
 	
-	public Sessao(@NotNull Date inicio, @NotNull Date fim) {
+	public Sessao(@NotNull Date inicio, @NotNull Date fim, @NotNull Atividade atividade, List<Usuario> presentes) {
 		super();
 		this.inicio = inicio;
 		this.fim = fim;
+		this.atividade = atividade;
+		this.presentes = presentes;
 	}
 
-	public int getId() {
-		return id;
+	public Sessao(@NotNull Date inicio, @NotNull Date fim, @NotNull Atividade atividade) {
+		super();
+		this.inicio = inicio;
+		this.fim = fim;
+		this.atividade = atividade;
 	}
 
 	public Date getInicio() {
@@ -50,12 +65,33 @@ public class Sessao {
 	public void setInicio(Date inicio) {
 		this.inicio = inicio;
 	}
-	
+
 	public Date getFim() {
 		return fim;
 	}
-	
+
 	public void setFim(Date fim) {
 		this.fim = fim;
-	}	
+	}
+
+	public Atividade getAtividade() {
+		return atividade;
+	}
+
+	public void setAtividade(Atividade atividade) {
+		this.atividade = atividade;
+	}
+
+	public List<Usuario> getPresentes() {
+		return presentes;
+	}
+
+	public void setPresentes(List<Usuario> presentes) {
+		this.presentes = presentes;
+	}
+
+	public int getId() {
+		return id;
+	}
+	
 }
