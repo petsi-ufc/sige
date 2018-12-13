@@ -1,4 +1,4 @@
-package br.ufc.pet.seven.entity;
+package br.ufc.pet.seven.evento;
 
 import java.util.Date;
 import java.util.List;
@@ -8,12 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+
+import br.ufc.pet.seven.atividade.Atividade;
+import br.ufc.pet.seven.usuario.Usuario;
 
 @Entity
 @Table(name = "evento")
@@ -23,53 +27,47 @@ public class Evento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
 	private int id;
-	
+
 	@NotNull
 	private String nome;
-	
-	@NotNull
+
 	private String sigla;
-	
-	@NotNull
 	private String area;
-	
-	@NotNull
 	private String localizacao;
-	
-	@NotNull
 	private String descricao;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date incio_inscricao;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date fim_inscricao;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date inicio;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	private Date fim;
-	
+
 	private boolean status = true;
-	
+
 	@ManyToOne
+	@NotNull
 	private Usuario organizador;
-	
+
 	@OneToMany
-	private List<Atividade> atividade;
+	@JoinColumn(name = "evento_id")
+	private List<Atividade> atividades;
 
 	public Evento() {
-		
+
 	}
 
-	public Evento(@NotNull String nome, @NotNull String sigla, @NotNull String area, @NotNull String localizacao,
-			@NotNull String descricao, @NotNull Date incio_inscricao, @NotNull Date fim_inscricao, @NotNull Date inicio,
-			@NotNull Date fim, Usuario organizador) {
+	public Evento(@NotNull String nome, String sigla, String area, String localizacao, String descricao, 
+			@NotNull Date incio_inscricao, @NotNull Date fim_inscricao, @NotNull Date inicio, @NotNull Date fim) {
 		super();
 		this.nome = nome;
 		this.sigla = sigla;
@@ -80,7 +78,6 @@ public class Evento {
 		this.fim_inscricao = fim_inscricao;
 		this.inicio = inicio;
 		this.fim = fim;
-		this.organizador = organizador;
 	}
 
 	public String getNome() {
@@ -171,15 +168,16 @@ public class Evento {
 		this.organizador = organizador;
 	}
 
-	public List<Atividade> getAtividade() {
-		return atividade;
+	public List<Atividade> getAtividades() {
+		return atividades;
 	}
 
-	public void setAtividade(List<Atividade> atividade) {
-		this.atividade = atividade;
+	public void setAtividades(List<Atividade> atividades) {
+		this.atividades = atividades;
 	}
 
 	public int getId() {
 		return id;
 	}
+
 }

@@ -1,14 +1,16 @@
-package br.ufc.pet.seven.entity;
+package br.ufc.pet.seven.usuario;
 
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -18,59 +20,57 @@ import org.hibernate.annotations.CreationTimestamp;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
-	
+
+	public static final String MASCULINO = "masculino";
+	public static final String FEMININO = "feminino";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
 	private int id;
-	
+
 	@NotNull
 	private String nome;
-	
+
 	@NotNull
 	private String senha;
-	
-	@NotNull
-	private String telefone;
-	
+
 	@NotNull
 	private String email;
-	
+
 	@Temporal(TemporalType.DATE)
 	@NotNull
 	private Date data_nascimento;
-	
-	@ManyToOne
-	@NotNull
-	private Sexo sexo;
-	
-	private String instituicao = null;
 
 	@NotNull
+	private String sexo;
+
+	private String telefone;
+	private String instituicao;
 	private String cidade;
-	
-	@NotNull
 	private String uf;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
 	@NotNull
 	private Date data_criacao;
-	
-	@ManyToMany
+
+	@OneToMany
 	@NotNull
-	private List<Papel> papel;
-	
+	@JoinColumn(name = "usuario_id")
+	@Column(name = "papel")
+	private List<Papel> papeis;
+
 	private boolean status_conta = true;
 	private boolean ativacao_email = false;
-	
-	public Usuario(){
-		
+
+	public Usuario() {
+
 	}
-	
-	public Usuario(@NotNull String nome, @NotNull String senha, @NotNull String telefone, @NotNull String email,
-			@NotNull Date data_nascimento, @NotNull Sexo sexo, String instituicao, @NotNull String cidade,
-			@NotNull String uf, List<Papel> papel) {
+
+	public Usuario(@NotNull String nome, @NotNull String senha, String telefone, @NotNull String email,
+			@NotNull Date data_nascimento, @NotNull String sexo, String instituicao, String cidade,
+			String uf, @NotNull Date data_criacao, @NotNull List<Papel> papeis) {
 		super();
 		this.nome = nome;
 		this.senha = senha;
@@ -81,11 +81,8 @@ public class Usuario {
 		this.instituicao = instituicao;
 		this.cidade = cidade;
 		this.uf = uf;
-		this.papel = papel;
-	}
-
-	public int getId() {
-		return id;
+		this.data_criacao = data_criacao;
+		this.papeis = papeis;
 	}
 
 	public String getNome() {
@@ -128,11 +125,11 @@ public class Usuario {
 		this.data_nascimento = data_nascimento;
 	}
 
-	public Sexo getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(Sexo sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
@@ -164,27 +161,44 @@ public class Usuario {
 		return data_criacao;
 	}
 
-	public List<Papel> getPapel() {
-		return papel;
+	public void setData_criacao(Date data_criacao) {
+		this.data_criacao = data_criacao;
 	}
 
-	public void setPapel(List<Papel> papel) {
-		this.papel = papel;
+	public List<Papel> getPapeis() {
+		return papeis;
 	}
 
-	public boolean isStatus() {
+	public void setPapeis(List<Papel> papeis) {
+		this.papeis = papeis;
+	}
+
+	public boolean isStatus_conta() {
 		return status_conta;
 	}
 
-	public void setStatus(boolean status) {
-		this.status_conta = status;
+	public void setStatus_conta(boolean status_conta) {
+		this.status_conta = status_conta;
 	}
 
-	public boolean isAtivacao() {
+	public boolean isAtivacao_email() {
 		return ativacao_email;
 	}
 
-	public void setAtivacao(boolean ativacao) {
-		this.ativacao_email = ativacao;
+	public void setAtivacao_email(boolean ativacao_email) {
+		this.ativacao_email = ativacao_email;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public static String getMasculino() {
+		return MASCULINO;
+	}
+
+	public static String getFeminino() {
+		return FEMININO;
+	}
+
 }
