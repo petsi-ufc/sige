@@ -51,7 +51,7 @@ $ git pull origin dev
 $ git checkout -b [##-issue] dev
 ```
 
-**Obs.:** o nome da nova branch deverá seguir o padrão código da issue especificada no **[board] + "-issue"(http://git.quixada.ufc.br/npi/dadosabertos/boards)** do projeto e atrelada ao desenvolvedor.
+**Obs.:** o nome da nova branch deverá seguir o padrão código da issue especificada no **[board](https://github.com/petufc/sige/projects/1)** do projeto + "-issue" e atrelada ao desenvolvedor.
 
 ### Padrão dos *commits*
 
@@ -74,7 +74,7 @@ $ git pull origin dev
 
 
 # Acessa a branch de desenvolvimento, realiza o merge das atualizações da dev e trata possíveis conflitos
-$ git checkout [issue-##]
+$ git checkout [##-issue]
 
 $ git merge --no-ff dev
 ```
@@ -84,9 +84,9 @@ O passo final **(somente para Admin/Master do Repositório)** é enviar as atual
 ```
 # Volta para a dev e envia a nova funcionalidade para ela 
 $ git checkout dev
-$ git merge [issue-##]
+$ git merge [##-issue]
 
 # Deleta a branch de desenvolvimento e envia as atualizações para o repositório remoto
-$ git branch -d [issue-##]
+$ git branch -d [##-issue]
 $ git push origin dev
 ```
