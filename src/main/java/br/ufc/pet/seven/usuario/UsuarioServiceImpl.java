@@ -3,7 +3,9 @@ package br.ufc.pet.seven.usuario;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UsuarioServiceImpl implements UsuarioService {
 	@Autowired
 	UsuarioRepository repo;

@@ -2,6 +2,9 @@ package br.ufc.pet.seven.usuario;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface UsuarioService {
 	
 	public List<Usuario> readUsuarios();

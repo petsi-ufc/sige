@@ -3,7 +3,9 @@ package br.ufc.pet.seven.evento;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EventoServiceImpl implements EventoService {
 
 	@Autowired
@@ -40,7 +42,7 @@ public class EventoServiceImpl implements EventoService {
 	}
 
 	@Override
-	public Evento encerrarEvento(Evento evento) {	
+	public Evento encerrarEvento(Evento evento) {
 		return null;
 	}
 
