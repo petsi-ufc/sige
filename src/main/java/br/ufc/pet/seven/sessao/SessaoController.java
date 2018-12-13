@@ -10,37 +10,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import br.ufc.pet.seven.sessao.Sessao;
-import br.ufc.pet.seven.sessao.SessaoRepository;
-
 public class SessaoController {
 
 	@Autowired
-	SessaoRepository repo;
+	SessaoService service;
 
 	@GetMapping("/sessaos")
 	public List<Sessao> readSessoes() {
-		return repo.findAll();
+		return service.readSessoes();
 	}
 
 	@GetMapping("/sessao/{id}")
 	public Sessao readSessaoById(@PathVariable(value = "id") int id) {
-		return repo.getById(id);
+		return service.readSessaoById(id);
 	}
 
 	@PostMapping("/sessao")
 	public Sessao createSessao(@RequestBody Sessao sessao) {
-		return repo.save(sessao);
+		return service.createSessao(sessao);
 	}
 
 	@DeleteMapping("/sessao")
 	public void deleteSessao(@RequestBody Sessao sessao) {
-		repo.delete(sessao);
+		service.deleteSessao(sessao);
 	}
 
 	@PutMapping("/sessao")
 	public Sessao updateSessao(@RequestBody Sessao sessao) {
-		return repo.save(sessao);
+		return service.updateSessao(sessao);
 	}
 
 }

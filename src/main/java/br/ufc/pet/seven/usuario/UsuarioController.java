@@ -9,33 +9,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 public class UsuarioController {
-	
+
 	@Autowired
-	UsuarioRepository repo;
+	UsuarioService service;
 
 	@GetMapping("/usuarios")
 	public List<Usuario> readUsuarios() {
-		return repo.findAll();
+		return service.readUsuarios();
 	}
 
 	@GetMapping("/usuario/{id}")
 	public Usuario readUsuarioById(int id) {
-		return repo.getById(id);
+		return service.readUsuarioById(id);
 	}
 
 	@PostMapping("/usuario")
 	public Usuario createUsuario(Usuario usuario) {
-		return repo.save(usuario);
+		return service.createUsuario(usuario);
 	}
 
 	@DeleteMapping("/usuario")
 	public void deleteUsuario(Usuario usuario) {
-		repo.delete(usuario);
+		service.deleteUsuario(usuario);
+		;
 	}
 
 	@PutMapping("/usuario")
 	public Usuario updateUsuario(Usuario usuario) {
-		return repo.save(usuario);
+		return service.updateUsuario(usuario);
 	}
-	
+
 }
