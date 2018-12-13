@@ -4,4 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SessaoRepository extends JpaRepository<Sessao, Integer> {
 
+	public Sessao getById(int id);
 }
