@@ -19,7 +19,7 @@ public class SessaoController {
 	SessaoRepository repo;
 
 	@GetMapping("/sessaos")
-	public List<Sessao> readSessaos() {
+	public List<Sessao> readSessoes() {
 		return repo.findAll();
 	}
 
