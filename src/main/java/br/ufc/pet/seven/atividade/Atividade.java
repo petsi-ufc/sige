@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -35,13 +37,13 @@ public class Atividade {
 	@Column(updatable = false, nullable = false)
 	private int id;
 
-	@NotNull
 	private String localizacao;
 
 	@NotNull
 	private String nome;
 
 	@ManyToOne
+	@NotNull
 	private Evento evento;
 
 	@NotNull
@@ -50,26 +52,26 @@ public class Atividade {
 	@NotNull
 	private String tipo_atividade;
 
-	private boolean aceita_inscricao = true;
-	private boolean certificado_liberado = false;
-
 	@ManyToOne
 	@NotNull
 	private Usuario responsavel;
 
 	@OneToMany
+	@JoinColumn(name = "atividade_id")
 	@NotNull
 	private List<Sessao> sessoes;
 
-	@OneToMany
-	@NotNull
+	@ManyToMany
 	private List<Usuario> inscritos;
 
+	private boolean aceita_inscricao = true;
+	private boolean certificado_liberado = false;
+	
 	public Atividade() {
 
 	}
 
-	public Atividade(@NotNull String localizacao, @NotNull String nome, Evento evento, @NotNull int vagas,
+	public Atividade(String localizacao, @NotNull String nome, Evento evento, @NotNull int vagas,
 			@NotNull String tipo_atividade, @NotNull Usuario responsavel, @NotNull List<Sessao> sessoes) {
 		super();
 		this.localizacao = localizacao;
