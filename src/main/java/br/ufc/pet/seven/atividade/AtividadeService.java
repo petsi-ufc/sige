@@ -1,5 +1,5 @@
 package br.ufc.pet.seven.atividade;
 
-public class AtividadeService {
+public interface AtividadeService {
 
 }

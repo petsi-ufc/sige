@@ -1,5 +1,5 @@
 package br.ufc.pet.seven.sessao;
 
-public class SessaoService {
+public interface SessaoService {
 
 }
