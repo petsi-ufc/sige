@@ -56,7 +56,7 @@ public class EventoController {
 	}
 
 	@PostMapping("/publicar")
-	@ApiOperation(value = "Retorna uma lista de Eventos")
+	@ApiOperation(value = "Torna um Evento público")
 	public void publicarEvento(@RequestBody Evento evento) {
 		service.publicarEvento(evento);
 	}

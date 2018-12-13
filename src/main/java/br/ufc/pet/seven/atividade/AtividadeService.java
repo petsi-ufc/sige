@@ -2,6 +2,9 @@ package br.ufc.pet.seven.atividade;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface AtividadeService {
 	
 	public List<Atividade> readAtividades();

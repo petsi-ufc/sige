@@ -16,14 +16,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.stereotype.Component;
-
 import br.ufc.pet.seven.atividade.Atividade;
 import br.ufc.pet.seven.usuario.Usuario;
 
 @Entity
 @Table(name = "evento")
-@Component
 public class Evento {
 
 	@Id

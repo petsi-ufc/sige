@@ -1,4 +1,4 @@
-package br.ufc.pet.seven.evento;
+package br.ufc.pet.seven.config;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
