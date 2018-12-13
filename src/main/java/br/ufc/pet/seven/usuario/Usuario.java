@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,9 +36,6 @@ public class Usuario {
 	private String senha;
 
 	@NotNull
-	private String telefone;
-
-	@NotNull
 	private String email;
 
 	@Temporal(TemporalType.DATE)
@@ -47,12 +45,9 @@ public class Usuario {
 	@NotNull
 	private String sexo;
 
-	private String instituicao = null;
-
-	@NotNull
+	private String telefone;
+	private String instituicao;
 	private String cidade;
-
-	@NotNull
 	private String uf;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -62,6 +57,7 @@ public class Usuario {
 
 	@OneToMany
 	@NotNull
+	@JoinColumn(name = "usuario_id")
 	@Column(name = "papel")
 	private List<Papel> papeis;
 
@@ -72,9 +68,9 @@ public class Usuario {
 
 	}
 
-	public Usuario(@NotNull String nome, @NotNull String senha, @NotNull String telefone, @NotNull String email,
-			@NotNull Date data_nascimento, @NotNull String sexo, String instituicao, @NotNull String cidade,
-			@NotNull String uf, @NotNull Date data_criacao, @NotNull List<Papel> papeis) {
+	public Usuario(@NotNull String nome, @NotNull String senha, String telefone, @NotNull String email,
+			@NotNull Date data_nascimento, @NotNull String sexo, String instituicao, String cidade,
+			String uf, @NotNull Date data_criacao, @NotNull List<Papel> papeis) {
 		super();
 		this.nome = nome;
 		this.senha = senha;

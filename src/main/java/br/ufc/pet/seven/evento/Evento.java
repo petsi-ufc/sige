@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -30,16 +31,9 @@ public class Evento {
 	@NotNull
 	private String nome;
 
-	@NotNull
 	private String sigla;
-
-	@NotNull
 	private String area;
-
-	@NotNull
 	private String localizacao;
-
-	@NotNull
 	private String descricao;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -61,18 +55,19 @@ public class Evento {
 	private boolean status = true;
 
 	@ManyToOne
+	@NotNull
 	private Usuario organizador;
 
 	@OneToMany
+	@JoinColumn(name = "evento_id")
 	private List<Atividade> atividades;
 
 	public Evento() {
 
 	}
 
-	public Evento(@NotNull String nome, @NotNull String sigla, @NotNull String area, @NotNull String localizacao,
-			@NotNull String descricao, @NotNull Date incio_inscricao, @NotNull Date fim_inscricao, @NotNull Date inicio,
-			@NotNull Date fim) {
+	public Evento(@NotNull String nome, String sigla, String area, String localizacao, String descricao, 
+			@NotNull Date incio_inscricao, @NotNull Date fim_inscricao, @NotNull Date inicio, @NotNull Date fim) {
 		super();
 		this.nome = nome;
 		this.sigla = sigla;
