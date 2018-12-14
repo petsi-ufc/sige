@@ -25,9 +25,9 @@ public class SwaggerConfig {
 			.select()
             .apis(
             	RequestHandlerSelectors.
-            	basePackage("br.ufc.pet.seven.evento")
+            	basePackage("br.ufc.pet.seven")
             )
-            .paths(regex("/evento.*"))
+            .paths(regex("/.*"))
             .build()
             .apiInfo(metaInfo());
 	}
