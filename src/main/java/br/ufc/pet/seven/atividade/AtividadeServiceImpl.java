@@ -26,8 +26,9 @@ public class AtividadeServiceImpl implements AtividadeService {
 	}
 
 	@Override
-	public void deleteAtividade(Atividade atividade) {
+	public String deleteAtividade(Atividade atividade) {
 		repo.delete(atividade);
+		return "Activity has been deleted";
 	}
 
 	@Override

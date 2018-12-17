@@ -1,8 +1,7 @@
 package br.ufc.pet.seven.atividade;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,47 +10,62 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value = "/atividade")
+@RequestMapping(value = "/atividade/")
 @Api(value = "Módulo de Atividades")
 @CrossOrigin(origins = "*")
 public class AtividadeController {
 	@Autowired
 	private AtividadeService service;
 
-	@GetMapping("/listar")
+	/*As respostas do ResponseEntity<?> presisam de um retorno em json 
+	recomendo utilizar o JACKSON*/
+	
+	/*Nenhuma request precisa ser especificadas com nome o proprio metodo 
+	 http diz o que elas vão fazer*/
+	
+	/*Por enquanto que não foi feito o tratamento de erro a resposta vai ficar como 
+	OK(Codigo http:200) pra fins de teste*/
+	
+	@GetMapping(value="/", produces = "application/json")
 	@ApiOperation(value = "Retorna uma lista de Atividades")
-	public List<Atividade> readAtividades() {
-		return service.readAtividades();
+	@ResponseBody
+	public ResponseEntity<?> readAtividades() {
+		return ResponseEntity.ok(service.readAtividades());
 	}
-
-	@GetMapping("/buscar/{id}")
+	
+	@ResponseBody
+	@GetMapping(value="/{id}", produces = "application/json")
 	@ApiOperation(value = "Retorna uma Atividade com base no id")
-	public Atividade readAtividadeById(@PathVariable(value = "id") int id) {
-		return service.readAtividadeById(id);
+	public ResponseEntity<?> readAtividadeById(@PathVariable(value = "id") int id) {
+		return ResponseEntity.ok(service.readAtividadeById(id));
 	}
-
-	@PostMapping("/criar")
+	
+	@ResponseBody
+	@PostMapping(value="/", produces = "application/json")
 	@ApiOperation(value = "Cria uma nova Atividade")
-	public Atividade createAtividade(@RequestBody Atividade atividade) {
-		return service.createAtividade(atividade);
+	public ResponseEntity<?> createAtividade(@RequestBody Atividade atividade) {
+		return ResponseEntity.ok(service.createAtividade(atividade));
 	}
-
-	@DeleteMapping("/deletar")
+	
+	@ResponseBody
+	@DeleteMapping(value="/", produces = "application/json")
 	@ApiOperation(value = "Deleta uma atividade existente")
-	public void deleteAtividade(@RequestBody Atividade atividade) {
-		service.deleteAtividade(atividade);
+	public ResponseEntity<?> deleteAtividade(@RequestBody Atividade atividade) {
+		return ResponseEntity.ok(service.deleteAtividade(atividade));
 	}
-
-	@PutMapping("/atualizar")
+	
+	@ResponseBody
+	@PutMapping(value="/", produces = "application/json")
 	@ApiOperation(value = "Atualiza uma atividade existentente")
-	public Atividade updateAtividade(@RequestBody Atividade atividade) {
-		return service.updateAtividade(atividade);
+	public ResponseEntity<?> updateAtividade(@RequestBody Atividade atividade) {
+		return ResponseEntity.ok(service.updateAtividade(atividade));
 	}
 
 }

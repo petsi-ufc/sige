@@ -13,7 +13,7 @@ public interface AtividadeService {
 
 	public Atividade createAtividade(Atividade atividade);
 
-	public void deleteAtividade(Atividade atividade);
+	public String deleteAtividade(Atividade atividade);
 
 	public Atividade updateAtividade(Atividade atividade);
 }
