@@ -22,8 +22,12 @@ import io.swagger.annotations.ApiOperation;
 @CrossOrigin(origins = "*")
 public class EventoController {
 
-	@Autowired
 	private EventoService service;
+	
+	@Autowired
+	public EventoController(EventoService service){
+		this.service = service;
+	}
 
 	@GetMapping("/listar")
 	@ApiOperation(value = "Retorna uma lista de Eventos")

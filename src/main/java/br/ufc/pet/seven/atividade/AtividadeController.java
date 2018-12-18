@@ -21,8 +21,13 @@ import io.swagger.annotations.ApiOperation;
 @Api(value = "Módulo de Atividades")
 @CrossOrigin(origins = "*")
 public class AtividadeController {
-	@Autowired
+	
 	private AtividadeService service;
+	
+	@Autowired
+	public AtividadeController(AtividadeService service){
+		this.service = service;
+	}
 
 	/*As respostas do ResponseEntity<?> presisam de um retorno em json 
 	recomendo utilizar o JACKSON*/

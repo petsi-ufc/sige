@@ -26,8 +26,8 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(updatable = false, nullable = false)
-	private int id;
+	@Column(columnDefinition = "serial", updatable = false, nullable = false)
+	private long id;
 
 	@NotNull
 	private String nome;
@@ -40,7 +40,8 @@ public class Usuario {
 
 	@Temporal(TemporalType.DATE)
 	@NotNull
-	private Date data_nascimento;
+	@Column(name = "data_nascimento")
+	private Date dataNascimento;
 
 	@NotNull
 	private String sexo;
@@ -53,7 +54,8 @@ public class Usuario {
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
 	@NotNull
-	private Date data_criacao;
+	@Column(name = "data_criacao")
+	private Date dataCriacao;
 
 	@OneToMany
 	@NotNull
@@ -61,27 +63,30 @@ public class Usuario {
 	@Column(name = "papel")
 	private List<Papel> papeis;
 
-	private boolean status_conta = true;
-	private boolean ativacao_email = false;
+	@Column(name = "status_conta")
+	private boolean statusConta = true;
+	
+	@Column(name = "ativacaoEmail")
+	private boolean ativacaoEmail = false;
 
 	public Usuario() {
 
 	}
 
 	public Usuario(@NotNull String nome, @NotNull String senha, String telefone, @NotNull String email,
-			@NotNull Date data_nascimento, @NotNull String sexo, String instituicao, String cidade,
-			String uf, @NotNull Date data_criacao, @NotNull List<Papel> papeis) {
+			@NotNull Date dataNascimento, @NotNull String sexo, String instituicao, String cidade,
+			String uf, @NotNull Date dataCriacao, @NotNull List<Papel> papeis) {
 		super();
 		this.nome = nome;
 		this.senha = senha;
 		this.telefone = telefone;
 		this.email = email;
-		this.data_nascimento = data_nascimento;
+		this.dataNascimento = dataNascimento;
 		this.sexo = sexo;
 		this.instituicao = instituicao;
 		this.cidade = cidade;
 		this.uf = uf;
-		this.data_criacao = data_criacao;
+		this.dataCriacao = dataCriacao;
 		this.papeis = papeis;
 	}
 
@@ -117,12 +122,12 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public Date getData_nascimento() {
-		return data_nascimento;
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setData_nascimento(Date data_nascimento) {
-		this.data_nascimento = data_nascimento;
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public String getSexo() {
@@ -157,12 +162,12 @@ public class Usuario {
 		this.uf = uf;
 	}
 
-	public Date getData_criacao() {
-		return data_criacao;
+	public Date getDataCriacao() {
+		return dataCriacao;
 	}
 
-	public void setData_criacao(Date data_criacao) {
-		this.data_criacao = data_criacao;
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
 	}
 
 	public List<Papel> getPapeis() {
@@ -173,23 +178,23 @@ public class Usuario {
 		this.papeis = papeis;
 	}
 
-	public boolean isStatus_conta() {
-		return status_conta;
+	public boolean isStatusConta() {
+		return statusConta;
 	}
 
-	public void setStatus_conta(boolean status_conta) {
-		this.status_conta = status_conta;
+	public void setStatusConta(boolean statusConta) {
+		this.statusConta = statusConta;
 	}
 
-	public boolean isAtivacao_email() {
-		return ativacao_email;
+	public boolean isAtivacaoEmail() {
+		return ativacaoEmail;
 	}
 
-	public void setAtivacao_email(boolean ativacao_email) {
-		this.ativacao_email = ativacao_email;
+	public void setAtivacaoEmail(boolean ativacaoEmail) {
+		this.ativacaoEmail = ativacaoEmail;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 

@@ -20,8 +20,12 @@ import io.swagger.annotations.ApiOperation;
 @CrossOrigin(origins = "*")
 public class UsuarioController {
 
-	@Autowired
 	private UsuarioService service;
+	
+	@Autowired
+	public UsuarioController(UsuarioService service){
+		this.service = service;
+	}
 
 	@GetMapping("/listar")
 	@ApiOperation(value = "Retorna uma lista de Usuários")

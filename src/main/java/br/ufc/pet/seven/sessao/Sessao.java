@@ -24,8 +24,8 @@ public class Sessao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(updatable = false, nullable = false)
-	private int id;
+	@Column(columnDefinition = "serial", updatable = false, nullable = false)
+	private long id;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
@@ -93,7 +93,7 @@ public class Sessao {
 		this.presentes = presentes;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 

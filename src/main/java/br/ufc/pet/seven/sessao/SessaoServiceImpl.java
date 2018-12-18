@@ -3,9 +3,9 @@ package br.ufc.pet.seven.sessao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class SessaoServiceImpl implements SessaoService {
 
 	@Autowired

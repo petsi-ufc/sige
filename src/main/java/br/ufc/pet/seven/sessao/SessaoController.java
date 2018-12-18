@@ -22,8 +22,12 @@ import io.swagger.annotations.ApiOperation;
 @CrossOrigin(origins = "*")
 public class SessaoController {
 
-	@Autowired
 	private SessaoService service;
+	
+	@Autowired
+	public SessaoController(SessaoService service){
+		this.service = service;
+	}
 
 	@GetMapping("/listar")
 	@ApiOperation(value = "Retorna uma lista de Sessões")
