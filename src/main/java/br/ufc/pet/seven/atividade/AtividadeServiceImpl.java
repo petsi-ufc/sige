@@ -3,7 +3,9 @@ package br.ufc.pet.seven.atividade;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AtividadeServiceImpl implements AtividadeService {
 	@Autowired
 	AtividadeRepository repo;
@@ -24,8 +26,9 @@ public class AtividadeServiceImpl implements AtividadeService {
 	}
 
 	@Override
-	public void deleteAtividade(Atividade atividade) {
+	public String deleteAtividade(Atividade atividade) {
 		repo.delete(atividade);
+		return "Activity has been deleted";
 	}
 
 	@Override
