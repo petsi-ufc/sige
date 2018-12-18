@@ -20,7 +20,7 @@ public class Papel {
 	@Id
 	@Column(updatable = false, nullable = false)
 	@NotNull
-	private String papel;
+	private String nome;
 
 	@ManyToOne
 	@NotNull
@@ -32,16 +32,16 @@ public class Papel {
 
 	public Papel(@NotNull String papel, @NotNull Usuario usuario) {
 		super();
-		this.papel = papel;
+		this.nome = papel;
 		this.usuario = usuario;
 	}
 
 	public String getPapel() {
-		return papel;
+		return nome;
 	}
 
 	public void setPapel(String papel) {
-		this.papel = papel;
+		this.nome = papel;
 	}
 
 	public static String getAdministrador() {

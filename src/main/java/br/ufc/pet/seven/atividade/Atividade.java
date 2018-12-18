@@ -34,8 +34,8 @@ public class Atividade {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(updatable = false, nullable = false)
-	private int id;
+	@Column(columnDefinition = "serial", updatable = false, nullable = false)
+	private long id;
 
 	private String localizacao;
 
@@ -50,7 +50,8 @@ public class Atividade {
 	private int vagas;
 
 	@NotNull
-	private String tipo_atividade;
+	@Column(name = "tipo_atividade")
+	private String tipoAtividade;
 
 	@ManyToOne
 	@NotNull
@@ -64,21 +65,24 @@ public class Atividade {
 	@ManyToMany
 	private List<Usuario> inscritos;
 
-	private boolean aceita_inscricao = true;
-	private boolean certificado_liberado = false;
+	@Column(name = "aceita_inscricao")
+	private boolean aceitaInscricao = true;
+	
+	@Column(name = "certificado_liberado")
+	private boolean certificadoLiberado = false;
 	
 	public Atividade() {
 
 	}
 
 	public Atividade(String localizacao, @NotNull String nome, Evento evento, @NotNull int vagas,
-			@NotNull String tipo_atividade, @NotNull Usuario responsavel, @NotNull List<Sessao> sessoes) {
+			@NotNull String tipoAtividade, @NotNull Usuario responsavel, @NotNull List<Sessao> sessoes) {
 		super();
 		this.localizacao = localizacao;
 		this.nome = nome;
 		this.evento = evento;
 		this.vagas = vagas;
-		this.tipo_atividade = tipo_atividade;
+		this.tipoAtividade = tipoAtividade;
 		this.responsavel = responsavel;
 		this.sessoes = sessoes;
 	}
@@ -115,28 +119,28 @@ public class Atividade {
 		this.vagas = vagas;
 	}
 
-	public String getTipo_atividade() {
-		return tipo_atividade;
+	public String getTipoAtividade() {
+		return tipoAtividade;
 	}
 
-	public void setTipo_atividade(String tipo_atividade) {
-		this.tipo_atividade = tipo_atividade;
+	public void setTipoAtividade(String tipoAtividade) {
+		this.tipoAtividade = tipoAtividade;
 	}
 
-	public boolean isAceita_inscricao() {
-		return aceita_inscricao;
+	public boolean isAceitaInscricao() {
+		return aceitaInscricao;
 	}
 
-	public void setAceita_inscricao(boolean aceita_inscricao) {
-		this.aceita_inscricao = aceita_inscricao;
+	public void setAceitaInscricao(boolean aceitaInscricao) {
+		this.aceitaInscricao = aceitaInscricao;
 	}
 
-	public boolean isCertificado_liberado() {
-		return certificado_liberado;
+	public boolean isCertificadoLiberado() {
+		return certificadoLiberado;
 	}
 
-	public void setCertificado_liberado(boolean certificado_liberado) {
-		this.certificado_liberado = certificado_liberado;
+	public void setCertificadoLiberado(boolean certificadoLiberado) {
+		this.certificadoLiberado = certificadoLiberado;
 	}
 
 	public Usuario getResponsavel() {
@@ -199,7 +203,7 @@ public class Atividade {
 		return OUTROS;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 

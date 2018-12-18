@@ -2,9 +2,6 @@ package br.ufc.pet.seven.evento;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-@Service
 public interface EventoService {
 
 	public List<Evento> readEventos();

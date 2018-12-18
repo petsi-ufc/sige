@@ -25,8 +25,8 @@ public class Evento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(updatable = false, nullable = false)
-	private int id;
+	@Column(columnDefinition = "serial", updatable = false, nullable = false)
+	private long id;
 
 	@NotNull
 	private String nome;
@@ -38,11 +38,13 @@ public class Evento {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date incio_inscricao;
+	@Column(name = "inicio_inscricao")
+	private Date incioInscricao;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date fim_inscricao;
+	@Column(name = "fim_inscricao")
+	private Date fimInscricao;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
@@ -67,15 +69,15 @@ public class Evento {
 	}
 
 	public Evento(@NotNull String nome, String sigla, String area, String localizacao, String descricao, 
-			@NotNull Date incio_inscricao, @NotNull Date fim_inscricao, @NotNull Date inicio, @NotNull Date fim) {
+			@NotNull Date incioInscricao, @NotNull Date fimInscricao, @NotNull Date inicio, @NotNull Date fim) {
 		super();
 		this.nome = nome;
 		this.sigla = sigla;
 		this.area = area;
 		this.localizacao = localizacao;
 		this.descricao = descricao;
-		this.incio_inscricao = incio_inscricao;
-		this.fim_inscricao = fim_inscricao;
+		this.incioInscricao = incioInscricao;
+		this.fimInscricao = fimInscricao;
 		this.inicio = inicio;
 		this.fim = fim;
 	}
@@ -120,20 +122,20 @@ public class Evento {
 		this.descricao = descricao;
 	}
 
-	public Date getIncio_inscricao() {
-		return incio_inscricao;
+	public Date getIncioInscricao() {
+		return incioInscricao;
 	}
 
-	public void setIncio_inscricao(Date incio_inscricao) {
-		this.incio_inscricao = incio_inscricao;
+	public void setIncioInscricao(Date incioInscricao) {
+		this.incioInscricao = incioInscricao;
 	}
 
-	public Date getFim_inscricao() {
-		return fim_inscricao;
+	public Date getFimInscricao() {
+		return fimInscricao;
 	}
 
-	public void setFim_inscricao(Date fim_inscricao) {
-		this.fim_inscricao = fim_inscricao;
+	public void setFimInscricao(Date fimInscricao) {
+		this.fimInscricao = fimInscricao;
 	}
 
 	public Date getInicio() {
@@ -176,7 +178,7 @@ public class Evento {
 		this.atividades = atividades;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
