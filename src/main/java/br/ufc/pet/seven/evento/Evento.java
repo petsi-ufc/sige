@@ -1,6 +1,5 @@
 package br.ufc.pet.seven.evento;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import br.ufc.pet.seven.atividade.Atividade;
@@ -36,50 +33,30 @@ public class Evento {
 	private String localizacao;
 	private String descricao;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@NotNull
-	@Column(name = "inicio_inscricao")
-	private Date incioInscricao;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@NotNull
-	@Column(name = "fim_inscricao")
-	private Date fimInscricao;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@NotNull
-	private Date inicio;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@NotNull
-	private Date fim;
-
 	private boolean status = true;
 
 	@ManyToOne
-	@NotNull
 	private Usuario organizador;
 
 	@OneToMany
 	@JoinColumn(name = "evento_id")
 	private List<Atividade> atividades;
+	
+	@NotNull
+	private Horario horario;
 
 	public Evento() {
 
 	}
 
-	public Evento(@NotNull String nome, String sigla, String area, String localizacao, String descricao, 
-			@NotNull Date incioInscricao, @NotNull Date fimInscricao, @NotNull Date inicio, @NotNull Date fim) {
+	public Evento(@NotNull String nome, String sigla, String area, String localizacao, String descricao, @NotNull Horario horario) {
 		super();
 		this.nome = nome;
 		this.sigla = sigla;
 		this.area = area;
 		this.localizacao = localizacao;
 		this.descricao = descricao;
-		this.incioInscricao = incioInscricao;
-		this.fimInscricao = fimInscricao;
-		this.inicio = inicio;
-		this.fim = fim;
+		this.horario = horario;
 	}
 
 	public String getNome() {
@@ -122,38 +99,6 @@ public class Evento {
 		this.descricao = descricao;
 	}
 
-	public Date getIncioInscricao() {
-		return incioInscricao;
-	}
-
-	public void setIncioInscricao(Date incioInscricao) {
-		this.incioInscricao = incioInscricao;
-	}
-
-	public Date getFimInscricao() {
-		return fimInscricao;
-	}
-
-	public void setFimInscricao(Date fimInscricao) {
-		this.fimInscricao = fimInscricao;
-	}
-
-	public Date getInicio() {
-		return inicio;
-	}
-
-	public void setInicio(Date inicio) {
-		this.inicio = inicio;
-	}
-
-	public Date getFim() {
-		return fim;
-	}
-
-	public void setFim(Date fim) {
-		this.fim = fim;
-	}
-
 	public boolean isStatus() {
 		return status;
 	}
@@ -176,6 +121,14 @@ public class Evento {
 
 	public void setAtividades(List<Atividade> atividades) {
 		this.atividades = atividades;
+	}
+	
+	public Horario getHorario() {
+		return horario;
+	}
+
+	public void setHorario(Horario horario) {
+		this.horario = horario;
 	}
 
 	public long getId() {

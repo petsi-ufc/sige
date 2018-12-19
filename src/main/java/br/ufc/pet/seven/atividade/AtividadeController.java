@@ -41,35 +41,35 @@ public class AtividadeController {
 	@GetMapping(value="/", produces = "application/json")
 	@ApiOperation(value = "Retorna uma lista de Atividades")
 	@ResponseBody
-	public ResponseEntity<?> readAtividades() {
+	public ResponseEntity<Object> readAtividades() {
 		return ResponseEntity.ok(service.readAtividades());
 	}
 	
 	@ResponseBody
 	@GetMapping(value="/{id}", produces = "application/json")
 	@ApiOperation(value = "Retorna uma Atividade com base no id")
-	public ResponseEntity<?> readAtividadeById(@PathVariable(value = "id") int id) {
+	public ResponseEntity<Object> readAtividadeById(@PathVariable(value = "id") int id) {
 		return ResponseEntity.ok(service.readAtividadeById(id));
 	}
 	
 	@ResponseBody
 	@PostMapping(value="/", produces = "application/json")
 	@ApiOperation(value = "Cria uma nova Atividade")
-	public ResponseEntity<?> createAtividade(@RequestBody Atividade atividade) {
+	public ResponseEntity<Object> createAtividade(@RequestBody Atividade atividade) {
 		return ResponseEntity.ok(service.createAtividade(atividade));
 	}
 	
 	@ResponseBody
 	@DeleteMapping(value="/", produces = "application/json")
 	@ApiOperation(value = "Deleta uma atividade existente")
-	public ResponseEntity<?> deleteAtividade(@RequestBody Atividade atividade) {
+	public ResponseEntity<Object> deleteAtividade(@RequestBody Atividade atividade) {
 		return ResponseEntity.ok(service.deleteAtividade(atividade));
 	}
 	
 	@ResponseBody
 	@PutMapping(value="/", produces = "application/json")
 	@ApiOperation(value = "Atualiza uma atividade existentente")
-	public ResponseEntity<?> updateAtividade(@RequestBody Atividade atividade) {
+	public ResponseEntity<Object> updateAtividade(@RequestBody Atividade atividade) {
 		return ResponseEntity.ok(service.updateAtividade(atividade));
 	}
 

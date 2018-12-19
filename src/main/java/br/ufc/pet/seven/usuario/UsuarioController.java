@@ -49,7 +49,6 @@ public class UsuarioController {
 	@ApiOperation(value = "Deleta um Usuário existente")
 	public void deleteUsuario(Usuario usuario) {
 		service.deleteUsuario(usuario);
-		;
 	}
 
 	@PutMapping("/atualizar")

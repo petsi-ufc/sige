@@ -1,6 +1,5 @@
 package br.ufc.pet.seven.usuario;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,11 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "usuario")
@@ -37,25 +32,9 @@ public class Usuario {
 
 	@NotNull
 	private String email;
-
-	@Temporal(TemporalType.DATE)
-	@NotNull
-	@Column(name = "data_nascimento")
-	private Date dataNascimento;
-
+	
 	@NotNull
 	private String sexo;
-
-	private String telefone;
-	private String instituicao;
-	private String cidade;
-	private String uf;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreationTimestamp
-	@NotNull
-	@Column(name = "data_criacao")
-	private Date dataCriacao;
 
 	@OneToMany
 	@NotNull
@@ -68,26 +47,22 @@ public class Usuario {
 	
 	@Column(name = "ativacaoEmail")
 	private boolean ativacaoEmail = false;
+	
+	private InformacaoDetalhadaUsuario informacaoDetalhadaUsuario;
 
 	public Usuario() {
 
 	}
 
-	public Usuario(@NotNull String nome, @NotNull String senha, String telefone, @NotNull String email,
-			@NotNull Date dataNascimento, @NotNull String sexo, String instituicao, String cidade,
-			String uf, @NotNull Date dataCriacao, @NotNull List<Papel> papeis) {
+	public Usuario(@NotNull String nome, @NotNull String senha, @NotNull String email, @NotNull String sexo,
+			@NotNull List<Papel> papeis, InformacaoDetalhadaUsuario informacaoDetalhadaUsuario) {
 		super();
 		this.nome = nome;
 		this.senha = senha;
-		this.telefone = telefone;
 		this.email = email;
-		this.dataNascimento = dataNascimento;
 		this.sexo = sexo;
-		this.instituicao = instituicao;
-		this.cidade = cidade;
-		this.uf = uf;
-		this.dataCriacao = dataCriacao;
 		this.papeis = papeis;
+		this.informacaoDetalhadaUsuario = informacaoDetalhadaUsuario;
 	}
 
 	public String getNome() {
@@ -106,68 +81,12 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-
-	public String getInstituicao() {
-		return instituicao;
-	}
-
-	public void setInstituicao(String instituicao) {
-		this.instituicao = instituicao;
-	}
-
-	public String getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-
-	public String getUf() {
-		return uf;
-	}
-
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
-
-	public Date getDataCriacao() {
-		return dataCriacao;
-	}
-
-	public void setDataCriacao(Date dataCriacao) {
-		this.dataCriacao = dataCriacao;
 	}
 
 	public List<Papel> getPapeis() {
@@ -192,6 +111,14 @@ public class Usuario {
 
 	public void setAtivacaoEmail(boolean ativacaoEmail) {
 		this.ativacaoEmail = ativacaoEmail;
+	}
+
+	public InformacaoDetalhadaUsuario getInformacaoDetalhadaUsuario() {
+		return informacaoDetalhadaUsuario;
+	}
+
+	public void setInformacaoDetalhadaUsuario(InformacaoDetalhadaUsuario informacaoDetalhadaUsuario) {
+		this.informacaoDetalhadaUsuario = informacaoDetalhadaUsuario;
 	}
 
 	public long getId() {
