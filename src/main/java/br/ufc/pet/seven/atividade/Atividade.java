@@ -65,10 +65,10 @@ public class Atividade {
 	@ManyToMany
 	private List<Usuario> inscritos;
 
-	@Column(name = "aceita_inscricao")
+	@Column(name = "aceita_inscricao", nullable = false, columnDefinition = "boolean default true")
 	private boolean aceitaInscricao = true;
 	
-	@Column(name = "certificado_liberado")
+	@Column(name = "certificado_liberado", nullable = false, columnDefinition = "boolean default false")
 	private boolean certificadoLiberado = false;
 	
 	public Atividade() {
