@@ -33,6 +33,7 @@ public class Evento {
 	private String localizacao;
 	private String descricao;
 
+	@Column(name = "status", nullable = false, columnDefinition = "boolean default true")
 	private boolean status = true;
 
 	@ManyToOne

@@ -42,10 +42,10 @@ public class Usuario {
 	@Column(name = "papel")
 	private List<Papel> papeis;
 
-	@Column(name = "status_conta")
+	@Column(name = "status_conta", nullable = false, columnDefinition = "boolean default true")
 	private boolean statusConta = true;
 	
-	@Column(name = "ativacaoEmail")
+	@Column(name = "ativacao_email", nullable = false, columnDefinition = "boolean default false")
 	private boolean ativacaoEmail = false;
 	
 	private InformacaoDetalhadaUsuario informacaoDetalhadaUsuario;
