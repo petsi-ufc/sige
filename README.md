@@ -1,3 +1,9 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=petufc_sige&metric=alert_status)](https://sonarcloud.io/dashboard?id=petufc_sige)
+
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=petufc_sige&metric=bugs)](https://sonarcloud.io/dashboard?id=petufc_sige)
+
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=petufc_sige&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=petufc_sige)
+
 # Sistema de Gerenciamento de Eventos
 Projeto para a gerenciamento de eventos, de participantes e de atividades do evento.
 
